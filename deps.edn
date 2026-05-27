@@ -4,11 +4,6 @@
    eu.maveniverse.maven.mima/context {:mvn/version "2.4.44"}
    eu.maveniverse.maven.mima.runtime/standalone-static {:mvn/version "2.4.44"}
    com.cognitect.aws/api {:mvn/version "0.8.824"}
-   ;; override jetty stuff under http-client for CVEs
-   ;;com.cognitect/http-client {:mvn/version "1.0.127" :exclusions [org.eclipse.jetty/jetty-http org.eclipse.jetty/jetty-client org.eclipse.jetty/jetty-util]}
-     ;;org.eclipse.jetty/jetty-http {:mvn/version "9.4.58.v20250814"}
-     ;;org.eclipse.jetty/jetty-client {:mvn/version "9.4.58.v20250814"}
-     ;;org.eclipse.jetty/jetty-util {:mvn/version "9.4.58.v20250814"}
    com.cognitect.aws/endpoints {:mvn/version "871.2.44.12"}
    com.cognitect.aws/s3 {:mvn/version "871.2.43.0"}
  }
