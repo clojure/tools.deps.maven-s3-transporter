@@ -1,0 +1,29 @@
+{:paths ["src/main/clojure" "src/main/resources"]
+ :deps {
+   org.clojure/clojure {:mvn/version "1.12.5"}
+   eu.maveniverse.maven.mima/context {:mvn/version "2.4.44"}
+   eu.maveniverse.maven.mima.runtime/standalone-static {:mvn/version "2.4.44"}
+   com.cognitect.aws/api {:mvn/version "0.8.824"}
+   ;; override jetty stuff under http-client for CVEs
+   ;;com.cognitect/http-client {:mvn/version "1.0.127" :exclusions [org.eclipse.jetty/jetty-http org.eclipse.jetty/jetty-client org.eclipse.jetty/jetty-util]}
+     ;;org.eclipse.jetty/jetty-http {:mvn/version "9.4.58.v20250814"}
+     ;;org.eclipse.jetty/jetty-client {:mvn/version "9.4.58.v20250814"}
+     ;;org.eclipse.jetty/jetty-util {:mvn/version "9.4.58.v20250814"}
+   com.cognitect.aws/endpoints {:mvn/version "871.2.44.12"}
+   com.cognitect.aws/s3 {:mvn/version "871.2.43.0"}
+ }
+ :aliases {
+   :test {:extra-paths ["src/test/clojure"]
+          :extra-deps  {org.slf4j/slf4j-nop {:mvn/version "1.7.36"}}}
+
+   ;; clj -M:cve
+   :cve {:extra-deps {io.github.clj-holmes/clj-watson {:git/tag "v6.1.0" :git/sha "be98e4d"}}
+         :extra-paths [".clj-watson"]
+         :jvm-opts ["--illegal-access=deny"]
+         :main-opts ["-m" "clj-watson.cli" "scan" "-p" "deps.edn"]}
+
+   ;; clj -M:outdated
+   :outdated {:extra-deps {com.github.liquidz/antq {:mvn/version "2.11.1276"}}
+             :main-opts ["-m" "antq.core"]}
+ }
+}
